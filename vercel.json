@@ -1,6 +1,19 @@
 {
   "version": 2,
-  "builds": [{ "src": "src/index.ts", "use": "@vercel/node" }],
-  "buildCommand": "npm run build",
-  "routes": [{ "src": "/(.*)", "dest": "dist/index.js" }]
+  "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build"
+      },
+    {
+      "src": "src/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "dist/index.js"
+    }
+  ]
 }
