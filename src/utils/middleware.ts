@@ -35,6 +35,7 @@ const ConfigRequest = async (
 const ConfigCorsOptions = async () => {
   interface CorsOptions {
     origin: (origin: string, callback: Function) => void;
+    methods: string[];
   }
 
   const url = new db(UrlDbName, UrlSchema);
@@ -51,6 +52,7 @@ const ConfigCorsOptions = async () => {
         callback(new Error("Not allowed by CORS"));
       }
     },
+    methods: ["POST"],
   };
 
   return corsOptions;
